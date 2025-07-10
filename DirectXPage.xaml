@@ -8,11 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <SwapChainPanel x:Name="swapChainPanel">
-    <TextBlock Text="Hello from XAML!"
-               HorizontalAlignment="Right"
-               VerticalAlignment="Top"
-               FontSize="30" />
+  <SwapChainPanel x:Name="swapChainPanel" Margin="430,251,0,0">
   </SwapChainPanel>
 
   <Page.BottomAppBar>
