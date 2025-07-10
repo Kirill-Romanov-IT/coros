@@ -12,7 +12,7 @@
 
 
     <Grid>
-        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
+        <Border BorderThickness="0" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
             <SwapChainPanel x:Name="swapChainPanel"/>
         </Border>
 
