@@ -4,7 +4,7 @@
 //
 
 #include "pch.h"
-#include "MyUserControl.xaml.h"
+#include "Files.xaml.h"
 
 using namespace coros;
 
@@ -21,7 +21,7 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-MyUserControl::MyUserControl()
+Files::Files()
 {
 	InitializeComponent();
 }

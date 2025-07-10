@@ -5,15 +5,15 @@
 
 #pragma once
 
-#include "MyUserControl.g.h"
+#include "Files.g.h"
 
 namespace coros
 {
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class MyUserControl sealed
+	public ref class Files sealed
 	{
 	public:
-		MyUserControl();
+		Files();
 	private:
 		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};

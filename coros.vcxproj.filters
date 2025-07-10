@@ -62,6 +62,12 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
+    <Filter Include="TopBar">
+      <UniqueIdentifier>{04293bdd-b020-43c3-94bb-991a0de6bc36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TopBar\Architecture">
+      <UniqueIdentifier>{4ff9248f-7272-4be0-acea-efabd1bf6bd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -84,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="DirectXPage.xaml" />
-    <Page Include="MyUserControl.xaml" />
+    <Page Include="Files.xaml">
+      <Filter>TopBar</Filter>
+    </Page>
   </ItemGroup>
 </Project>

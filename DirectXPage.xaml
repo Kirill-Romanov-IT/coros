@@ -16,7 +16,7 @@
             <SwapChainPanel x:Name="swapChainPanel"/>
         </Border>
 
-        <local:MyUserControl />
+        <local:Files />
     </Grid>
 
 
