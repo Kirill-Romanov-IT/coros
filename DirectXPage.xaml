@@ -8,8 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <SwapChainPanel x:Name="swapChainPanel" Margin="430,251,0,0">
-  </SwapChainPanel>
+  <Border BorderThickness="1" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
+  <SwapChainPanel x:Name="swapChainPanel"/>
+</Border>
 
   <Page.BottomAppBar>
     <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
