@@ -1,29 +1,15 @@
-﻿<Page
-    x:Class="coros.DirectXPage"
+﻿<UserControl
+    x:Class="coros.Architecture"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:coros"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="#FFF7F7F7">
-
-
-
+    d:DesignHeight="300"
+    d:DesignWidth="400">
 
     <Grid>
-        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
-            <SwapChainPanel x:Name="swapChainPanel"/>
-        </Border>
-
-        <local:Files />
+        <Button Content="Архитектура" VerticalAlignment="Top" Width="80" FontSize="9" Background="White" Margin="65 0 0 0"/>
     </Grid>
-
-
-
-
-
-
-
-
-</Page>
+</UserControl>

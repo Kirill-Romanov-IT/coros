@@ -199,6 +199,9 @@
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Architecture.xaml.h">
+      <DependentUpon>Architecture.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Common\DeviceResources.h" />
     <ClInclude Include="corosMain.h" />
     <ClInclude Include="DirectXPage.xaml.h">
@@ -217,6 +220,9 @@
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Architecture.xaml.cpp">
+      <DependentUpon>Architecture.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="corosMain.cpp" />
@@ -254,6 +260,9 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Architecture.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DirectXPage.xaml">
       <SubType>Designer</SubType>
     </Page>

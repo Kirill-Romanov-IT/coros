@@ -93,5 +93,8 @@
     <Page Include="Files.xaml">
       <Filter>TopBar</Filter>
     </Page>
+    <Page Include="Architecture.xaml">
+      <Filter>TopBar\Architecture</Filter>
+    </Page>
   </ItemGroup>
 </Project>

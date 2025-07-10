@@ -1,10 +1,10 @@
 ﻿//
-// MyUserControl.xaml.cpp
-// Implementation of the MyUserControl class
+// Architecture.xaml.cpp
+// Implementation of the Architecture class
 //
 
 #include "pch.h"
-#include "Files.xaml.h"
+#include "Architecture.xaml.h"
 
 using namespace coros;
 
@@ -21,12 +21,7 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-Files::Files()
+Architecture::Architecture()
 {
 	InitializeComponent();
-}
-
-void coros::Files::Architecture_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
-{
-
 }
