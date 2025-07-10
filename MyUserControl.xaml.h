@@ -14,5 +14,7 @@ namespace coros
 	{
 	public:
 		MyUserControl();
+	private:
+		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }
