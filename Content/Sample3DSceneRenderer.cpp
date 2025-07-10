@@ -14,7 +14,10 @@ Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceRes
 	m_degreesPerSecond(0),
 	m_indexCount(0),
 	m_tracking(false),
-	m_deviceResources(deviceResources)
+		m_rotation(0.0f),
+		m_lastPosX(0.0f),
+		m_rotationVelocity(0.0f),
+		m_deviceResources(deviceResources)
 {
 	CreateDeviceDependentResources();
 	CreateWindowSizeDependentResources();
@@ -70,13 +73,18 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 {
 	if (!m_tracking)
 	{
-		// Convert degrees to radians, then convert seconds to rotation angle
-		float radiansPerSecond = XMConvertToRadians(m_degreesPerSecond);
-		double totalRotation = timer.GetTotalSeconds() * radiansPerSecond;
-		float radians = static_cast<float>(fmod(totalRotation, XM_2PI));
-
-		Rotate(radians);
+		// Apply damping to the rotation velocity.
+		m_rotationVelocity *= 0.95f;
 	}
+
+	// If the velocity is very small, stop the rotation.
+	if (abs(m_rotationVelocity) < 0.001f)
+	{
+		m_rotationVelocity = 0.0f;
+	}
+
+	m_rotation += m_rotationVelocity;
+	Rotate(m_rotation);
 }
 
 // Rotate the 3D cube model a set amount of radians.
@@ -89,6 +97,7 @@ void Sample3DSceneRenderer::Rotate(float radians)
 void Sample3DSceneRenderer::StartTracking()
 {
 	m_tracking = true;
+	m_lastPosX = -1.0f;
 }
 
 // When tracking, the 3D cube can be rotated around its Y axis by tracking pointer position relative to the output screen width.
@@ -96,8 +105,11 @@ void Sample3DSceneRenderer::TrackingUpdate(float positionX)
 {
 	if (m_tracking)
 	{
-		float radians = XM_2PI * 2.0f * positionX / m_deviceResources->GetOutputSize().Width;
-		Rotate(radians);
+		if (m_lastPosX < 0)
+			m_lastPosX = positionX;
+		float dx = positionX - m_lastPosX;
+		m_lastPosX = positionX;
+		m_rotationVelocity = XM_2PI * 2.0f * dx / m_deviceResources->GetOutputSize().Width;
 	}
 }
 

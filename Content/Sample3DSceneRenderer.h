@@ -45,6 +45,9 @@ namespace coros
 		bool	m_loadingComplete;
 		float	m_degreesPerSecond;
 		bool	m_tracking;
+	float	m_rotation;
+	float	m_lastPosX;
+	float	m_rotationVelocity;
 	};
 }
 
