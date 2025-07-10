@@ -8,17 +8,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <Border BorderThickness="1" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
-  <SwapChainPanel x:Name="swapChainPanel"/>
-</Border>
+        
+         
 
-  <Page.BottomAppBar>
-    <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-        <AppBarButton AutomationProperties.Name="Sample Button"
-                      AutomationProperties.AutomationId="SampleAppBarButton"
-                      Click="AppBarButton_Click"/>
-      </StackPanel>
-    </AppBar>
-  </Page.BottomAppBar>
+    <Grid>
+        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
+            <SwapChainPanel x:Name="swapChainPanel"/>
+        </Border>
+
+        <local:MyUserControl />
+    </Grid>
+
+
+
+
+
+
+
+
 </Page>
