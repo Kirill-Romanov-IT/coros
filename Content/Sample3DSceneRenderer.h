@@ -17,13 +17,13 @@ namespace coros
 		void Update(DX::StepTimer const& timer);
 		void Render();
 		void StartTracking();
-		void TrackingUpdate(float positionX);
+		void TrackingUpdate(float positionX, float positionY);
 		void StopTracking();
 		bool IsTracking() { return m_tracking; }
 
 
 	private:
-		void Rotate(float radians);
+		void Rotate(float radiansY, float radiansX);
 
 	private:
 		// Cached pointer to device resources.
@@ -45,9 +45,10 @@ namespace coros
 		bool	m_loadingComplete;
 		float	m_degreesPerSecond;
 		bool	m_tracking;
-	float	m_rotation;
-	float	m_lastPosX;
-	float	m_rotationVelocity;
+		DirectX::XMFLOAT3	m_rotation;
+		float	m_lastPosX, m_lastPosY;
+		DirectX::XMFLOAT3 m_rotationVelocity;
+		bool	m_isFirstFrame;
 	};
 }
 

@@ -11,13 +11,15 @@ using namespace Windows::Foundation;
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
 Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
 	m_loadingComplete(false),
-	m_degreesPerSecond(0),
+	m_degreesPerSecond(45),
 	m_indexCount(0),
 	m_tracking(false),
-		m_rotation(0.0f),
+		m_rotation({0.0f, 0.0f, 0.0f}),
 		m_lastPosX(0.0f),
-		m_rotationVelocity(0.0f),
-		m_deviceResources(deviceResources)
+		m_lastPosY(0.0f),
+		m_rotationVelocity(0.0f, 0.0f, 0.0f),
+		m_deviceResources(deviceResources),
+	m_isFirstFrame(true)
 {
 	CreateDeviceDependentResources();
 	CreateWindowSizeDependentResources();
@@ -74,42 +76,55 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 	if (!m_tracking)
 	{
 		// Apply damping to the rotation velocity.
-		m_rotationVelocity *= 0.95f;
+		m_rotationVelocity.x *= 0.95f;
+		m_rotationVelocity.y *= 0.95f;
 	}
 
 	// If the velocity is very small, stop the rotation.
-	if (abs(m_rotationVelocity) < 0.001f)
+	if (abs(m_rotationVelocity.x) < 0.001f && abs(m_rotationVelocity.y) < 0.001f)
 	{
-		m_rotationVelocity = 0.0f;
+		m_rotationVelocity.x = 0.0f;
+		m_rotationVelocity.y = 0.0f;
 	}
 
-	m_rotation += m_rotationVelocity;
-	Rotate(m_rotation);
+	m_rotation.x += m_rotationVelocity.x;
+	m_rotation.y += m_rotationVelocity.y;
+	Rotate(m_rotation.y, m_rotation.x);
 }
 
 // Rotate the 3D cube model a set amount of radians.
-void Sample3DSceneRenderer::Rotate(float radians)
+void Sample3DSceneRenderer::Rotate(float radiansY, float radiansX)
 {
 	// Prepare to pass the updated model matrix to the shader
-	XMStoreFloat4x4(&m_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationY(radians)));
+	XMStoreFloat4x4(&m_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationRollPitchYaw(radiansX, radiansY, 0.0f)));
 }
 
 void Sample3DSceneRenderer::StartTracking()
 {
 	m_tracking = true;
-	m_lastPosX = -1.0f;
+	m_isFirstFrame = true;
 }
 
 // When tracking, the 3D cube can be rotated around its Y axis by tracking pointer position relative to the output screen width.
-void Sample3DSceneRenderer::TrackingUpdate(float positionX)
+void Sample3DSceneRenderer::TrackingUpdate(float positionX, float positionY)
 {
 	if (m_tracking)
 	{
-		if (m_lastPosX < 0)
+		if (m_isFirstFrame)
+		{
 			m_lastPosX = positionX;
-		float dx = positionX - m_lastPosX;
+			m_lastPosY = positionY;
+			m_rotationVelocity = {0.0f, 0.0f, 0.0f};
+			m_isFirstFrame = false;
+			return;
+		}
+
+		float deltaX = positionX - m_lastPosX;
+		float deltaY = positionY - m_lastPosY;
+		m_rotationVelocity.y = deltaX * 0.01f;
+		m_rotationVelocity.x = deltaY * 0.01f;
 		m_lastPosX = positionX;
-		m_rotationVelocity = XM_2PI * 2.0f * dx / m_deviceResources->GetOutputSize().Width;
+		m_lastPosY = positionY;
 	}
 }
 
