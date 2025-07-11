@@ -30,3 +30,8 @@ void coros::Files::Architecture_Loaded(Platform::Object^ sender, Windows::UI::Xa
 {
 
 }
+
+void coros::Files::Architecture_Loaded_1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+
+}

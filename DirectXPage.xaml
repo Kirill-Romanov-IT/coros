@@ -12,11 +12,11 @@
 
 
     <Grid>
-        <Border BorderThickness="0" BorderBrush="Black" CornerRadius="0" Margin="400,150,400,0">
+        <local:Files Height="1400"/>
+
+        <Border BorderThickness="0" BorderBrush="Black" CornerRadius="0" Margin="400,214,400,0">
             <SwapChainPanel x:Name="swapChainPanel"/>
         </Border>
-
-        <local:Files />
     </Grid>
 
 

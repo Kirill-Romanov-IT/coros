@@ -17,6 +17,7 @@ namespace coros
 	/// </summary>
 	public ref class DirectXPage sealed
 	{
+
 	public:
 		DirectXPage();
 		virtual ~DirectXPage();
@@ -54,6 +55,7 @@ namespace coros
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 		std::unique_ptr<corosMain> m_main; 
 		bool m_windowVisible;
+
 	};
 }
 
